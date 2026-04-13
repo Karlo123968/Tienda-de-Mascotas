@@ -1,0 +1,78 @@
+﻿@page
+@using Usuarios.Modelos
+@model Usuarios.Pages.UsuariosModel
+
+<h1>Mascotas</h1>
+
+<!-- 🔥 FORMULARIO AGREGAR -->
+<form method="post">
+    <input type="text" asp-for="NuevoUsuario.Nombre" placeholder="Nombre" /><br />
+    <input type="text" asp-for="NuevoUsuario.Tipo" placeholder="Tipo" /><br />
+    <input type="text" asp-for="NuevoUsuario.Raza" placeholder="Raza" /><br />
+    <input type="number" asp-for="NuevoUsuario.Edad" placeholder="Edad" /><br />
+    <input type="text" asp-for="NuevoUsuario.Dueño" placeholder="Dueño" /><br />
+    <input type="text" asp-for="NuevoUsuario.Telefono" placeholder="Teléfono" /><br />
+    <button type="submit">Agregar</button>
+</form>
+
+<br />
+
+<!-- 🔥 TABLA -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Raza</th>
+            <th>Edad</th>
+            <th>Dueño</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Mascota mascota in Model.Mascotas)
+        {
+            <tr>
+                <td>@mascota.Nombre</td>
+                <td>@mascota.Tipo</td>
+                <td>@mascota.Raza</td>
+                <td>@mascota.Edad</td>
+                <td>@mascota.Dueño</td>
+                <td>@mascota.Telefono</td>
+                <td>
+                    <a asp-page-handler="Editar" asp-route-id="@mascota.Id">Editar</a>
+
+                    <form method="post" asp-page-handler="Eliminar" style="display:inline;">
+                        <input type="hidden" name="id" value="@mascota.Id" />
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+
+<!-- 🔥 FORMULARIO EDITAR -->
+@if (Model.MascotaEditar != null)
+{
+    <h2>Editar Mascota</h2>
+
+    <form method="post" asp-page-handler="Editar">
+        <input type="hidden" asp-for="MascotaEditar.Id" />
+
+        <input type="text" asp-for="MascotaEditar.Nombre" placeholder="Nombre" /><br />
+        <input type="text" asp-for="MascotaEditar.Tipo" placeholder="Tipo" /><br />
+        <input type="text" asp-for="MascotaEditar.Raza" placeholder="Raza" /><br />
+        <input type="number" asp-for="MascotaEditar.Edad" placeholder="Edad" /><br />
+        <input type="text" asp-for="MascotaEditar.Dueño" placeholder="Dueño" /><br />
+        <input type="text" asp-for="MascotaEditar.Telefono" placeholder="Teléfono" /><br />
+
+        <button type="submit">Guardar cambios</button>
+
+
+
+    </form>
+}

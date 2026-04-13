@@ -1,0 +1,48 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="text-center">
+    <h1 class="display-4">🐾 Tienda de Mascotas</h1>
+    <p class="lead">Bienvenido a nuestro sistema de gestión de tienda de mascotas</p>
+</div>
+
+<hr />
+
+<div class="row text-center">
+
+    <div class="col-md-4">
+        <div class="card shadow p-3 mb-4">
+            <h3>🐶 Mascotas</h3>
+            <p>Conoce los diferentes tipos de mascotas disponibles en nuestra tienda.</p>
+            <a asp-page="/Mascotas" class="btn btn-primary">Ver más</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow p-3 mb-4">
+            <h3>🛒 Productos</h3>
+            <p>Explora alimentos, juguetes y accesorios para tus mascotas.</p>
+            <a asp-page="/ProductosInfo" class="btn btn-success">Ver más</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow p-3 mb-4">
+            <h3>🩺 Servicios</h3>
+            <p>Ofrecemos servicios veterinarios y de cuidado para tus mascotas.</p>
+            <a asp-page="/Servicios" class="btn btn-warning">Ver más</a>
+        </div>
+    </div>
+
+</div>
+
+<hr />
+
+<div class="text-center">
+    <h4>📋 Administración</h4>
+    <p>Gestiona los registros del sistema.</p>
+    <a asp-page="/Usuarios" class="btn btn-dark">Ir a Usuarios</a>
+</div>
